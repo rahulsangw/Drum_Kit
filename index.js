@@ -8,12 +8,13 @@ for(let i=0;i<numberofDrumButtons;i++){
 
         buttonPressed = this.textContent;
         MakeSound(buttonPressed);
-
+        buttonAnimation(buttonPressed);
     });
 
     document.addEventListener("keypress",function(event){
 
             MakeSound(event.key);
+            buttonAnimation(event.key);
     });
 
 }
@@ -64,3 +65,15 @@ function MakeSound(button){
 
 }
 
+function buttonAnimation(currentKey){
+
+    var activeButton=document.querySelector("."+currentKey);
+
+    //Adding the class to the <button> that was pressed..
+    activeButton.classList.toggle("pressed");//animation gets applied
+
+    setTimeout(function(){
+        activeButton.classList.toggle("pressed");//animation gets removed after .1 sec
+    },100);
+
+}
